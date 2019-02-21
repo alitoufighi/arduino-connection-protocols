@@ -2,7 +2,6 @@
 #include <Wire.h>
 
 SoftwareSerial vSerial(12, 13);
-SoftwareSerial bluetooth(0, 1);
 
 float distance;
 
@@ -23,7 +22,7 @@ void writeByte(int device, int address, int data) {
 
 void setup() {
     vSerial.begin(9600);
-    bluetooth.begin(9600);
+    Serial.begin(9600);
     writeByte(110, 0, 1);
     distance = 0;
 }
@@ -60,7 +59,5 @@ void loop() {
     vSerial.println("ut_board");
 
     char* distSerial = reinterpret_cast<char*>(&distance);
-    // bluetooth.write(distSerial, sizeof(float));
-    int sent = bluetooth.print(10);
-    vSerial.println(sent);
+    Serial.write(distSerial, 4);
 }

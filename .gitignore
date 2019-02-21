@@ -17,5 +17,6 @@
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
-
+*.workspace
+*.pdsbak
 # End of https://www.gitignore.io/api/platformio,visualstudiocode

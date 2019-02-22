@@ -5,7 +5,7 @@
 #include <LM35.h>
 #include <SoftwareSerial.h>
 
-Ultrasonic ultrasonic1(7, 6);	// An ultrasonic sensor HC-04
+Ultrasonic ultrasonic1(7, 6);
 SoftwareSerial vSerial(8, 9);
 float referenceVoltage;
 

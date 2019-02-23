@@ -30,24 +30,17 @@ void setup() {
 void loop() {
     delay(100);
     
-    int i = 0;
-    char X[4];
 
+    char X[4];
     int startAddress = 10;
-    while (i < 4) {
+    for(int i = 0; i < 4; ++i)
         X[i] = readByte(110, startAddress + i);
-        i++;
-    }
     float x = *reinterpret_cast<float*>(X);
 
-    i = 0;
     char Y[4];
     startAddress = 40;
-
-    while (i < 4) {
+    for(int i = 0; i < 4; ++i)
         Y[i] = readByte(110, startAddress + i);
-        i++;
-    }
     float y = *reinterpret_cast<float*>(Y);
 
     distance += x * x + y * y;

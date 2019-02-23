@@ -1,9 +1,9 @@
-#define TempPin 0
-
-#include <Arduino.h>
-#include <Ultrasonic.h>
-#include <LM35.h>
 #include <SoftwareSerial.h>
+#include <Ultrasonic.h>
+#include <Arduino.h>
+#include <LM35.h>
+
+#define LM35PIN 0
 
 Ultrasonic ultrasonic1(7, 6);
 SoftwareSerial vSerial(8, 9);
@@ -11,15 +11,15 @@ float referenceVoltage;
 
 void setup() {
   Serial.begin(9600);
+  vSerial.begin(9600);
+  pinMode(0, INPUT);
   analogReference(INTERNAL);
   referenceVoltage = 1.1;
-  pinMode(0, INPUT);
-  vSerial.begin(9600);
 }
 
 void loop() {
     int distance = ultrasonic1.read(CM);
-    int val = analogRead(TempPin);
+    int val = analogRead(LM35PIN);
     float temperature = (val * referenceVoltage * 100 / 1024.0); 
     vSerial.println(temperature);
 
